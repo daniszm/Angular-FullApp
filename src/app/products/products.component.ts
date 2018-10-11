@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductsService } from './../products.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs'
 import {NgForm} from '@angular/forms';
 
 @Component({
@@ -6,13 +8,23 @@ import {NgForm} from '@angular/forms';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
-  products = ["one", "two", "three"];
+export class ProductsComponent implements OnInit, OnDestroy {
+  products = [];
   productName: string;
+  private productsSubscription: Subscription;
 
-  constructor() { }
+  constructor(private productsService: ProductsService) {
+   }
+
+   ngOnDestroy() {
+     this.productsSubscription.unsubscribe();
+   }
 
   ngOnInit() {
+    this.products = this.productsService.getProducts();
+    this.productsSubscription = this.productsService.productsUpdated.subscribe(() => {
+      this.products = this.productsService.getProducts();
+    });
   }
 
   onRemoveProduct(productName) {
@@ -21,7 +33,7 @@ export class ProductsComponent implements OnInit {
 
   addItem(form) {
     if (form.valid) {
-      this.products.unshift(form.value.productName);
+      this.productsService.addProduct(form.value.productName);
     }
   }
 
