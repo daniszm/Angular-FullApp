@@ -2,5 +2,7 @@
     <input type="text" ngModel name="productName" required>
     <button type="submit">ADD</button>
 </form>
-<app-product (productClicked)="onRemoveProduct(product)" *ngFor="let product of products" [productName]="product">
+<app-product 
+    *ngFor="let product of products" 
+    [productName]="product">
 </app-product>

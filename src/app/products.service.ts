@@ -1,6 +1,5 @@
 import { Subject } from "rxjs";
 
-
 export class ProductsService {
     private products = ['A book'];
     productsUpdated = new Subject();
