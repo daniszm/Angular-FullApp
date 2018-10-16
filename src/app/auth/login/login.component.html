@@ -1,3 +1,54 @@
-<p>
-  login works!
-</p>
+<section>
+  <form 
+    fxLayout="column" 
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input 
+        type="email" 
+        matInput 
+        placeholder="Your email"
+        formControlName="email">
+        <mat-hint>Please enter a valid email</mat-hint>
+        <mat-error>Invalid or missing email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input 
+          type="password" 
+          matInput 
+          placeholder="Your password"
+          formControlName="password">
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
+  </form>
+</section>
+
+
+<!-- <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <mat-form-field>
+    <input
+      type="email"
+      matInput
+      placeholder="Login"
+      ngModel
+      name="login"
+      email
+      required>
+      <mat-error>Email is your login</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="password"
+      matInput
+      placeholder="Password"
+      ngModel
+      name="password"
+      minlength="6"
+      password
+      required>
+      <mat-error>Password contains min. 6 signs</mat-error>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Log in</button>
+</form> -->
