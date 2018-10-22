@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from './../../auth/auth.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -8,10 +10,16 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class SidenavListComponent implements OnInit {
 
   @Output() closeSidenav = new EventEmitter<void>();
+  isAuth = false;
+  authSubscription: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authSubscription = this.authService.authChange.subscribe(authStatus => {
+      this.isAuth = authStatus;
+    })
+
   }
 
   onClose() {
