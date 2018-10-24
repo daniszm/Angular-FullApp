@@ -25,4 +25,8 @@ export class TrainingService {
         this.name = this.runningExercise.name;
         this.exerciseChanged.next({...this.runningExercise});
     }
+
+    getRunningExercise() {
+        return {...this.runningExercise}
+    }
 }
