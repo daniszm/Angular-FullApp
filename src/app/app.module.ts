@@ -31,16 +31,14 @@ import { TrainingModule } from './training/training.module';
     SidenavListComponent
   ],
   imports: [
-    FlexLayoutModule,
     BrowserModule,
-    FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AuthModule,
-    TrainingModule
+    TrainingModule,
+    AuthModule
   ],
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent]
