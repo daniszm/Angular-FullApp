@@ -10,6 +10,7 @@ import { MatSnackBar } from "@angular/material";
 
 @Injectable()
 export class AuthService {
+
     authChange = new Subject<boolean>();
     private isAuthenticated = false;
 
@@ -46,9 +47,7 @@ export class AuthService {
         })
         .catch(error => {
             this.uiService.loadingStateChanged.next(false);
-            this.snackBar.open(error.message, null, {
-                duration: 3000
-            });
+            this.uiService.showSnackbar(error.message, null, 3000);
         });
     }
 
@@ -61,9 +60,7 @@ export class AuthService {
             this.uiService.loadingStateChanged.next(false);
         }).catch(error => {
             this.uiService.loadingStateChanged.next(false);
-            this.snackBar.open(error.message, null, {
-                duration: 3000
-            });
+            this.uiService.showSnackbar(error.message, null, 3000);
         });        
     }
 
