@@ -14,7 +14,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { StopTrainingComponent } from './training/current-training/stop-training.component';
 import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { AngularFireModule } from '@angular/fire';
@@ -39,7 +38,6 @@ import { TrainingModule } from './training/training.module';
     MaterialModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
     TrainingModule
