@@ -46,7 +46,9 @@
         color="primary">Agree all terms.</mat-checkbox>
     <button 
       type="submit" 
+      *ngIf="!isLoading"
       mat-raised-button color="primary" 
       [disabled]="f.invalid">Submit</button>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
   </form>
 </section>
