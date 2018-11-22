@@ -1,11 +1,10 @@
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AuthModule } from './auth/auth.module';
 import { UIService } from './shared/ui.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -18,9 +17,6 @@ import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from './../environments/environment';
-
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { TrainingModule } from './training/training.module';
 
 
 @NgModule({
@@ -37,8 +33,8 @@ import { TrainingModule } from './training/training.module';
     AppRoutingModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
-    TrainingModule,
-    AuthModule
+    AuthModule,
+    AngularFirestoreModule
   ],
   providers: [AuthService, TrainingService, UIService],
   bootstrap: [AppComponent]
